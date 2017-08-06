@@ -4,8 +4,15 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ChartModule } from 'angular2-highcharts';
+import { HighchartsStatic } from 'angular2-highcharts/dist/HighchartsService';
 
 export declare var require : any;
+export function highchartsFactory() {
+      const hc = require('highcharts');
+      const dd = require('highcharts/modules/drilldown');
+      dd(hc);
+      return hc;
+    }
 @NgModule({
   declarations: [
     AppComponent
@@ -14,9 +21,14 @@ export declare var require : any;
     BrowserModule,
     FormsModule,
     HttpModule,
-    ChartModule.forRoot(require('highcharts'))
+    ChartModule
   ],
-  providers: [],
+  providers: [
+    {
+    provide: HighchartsStatic,
+    useFactory: highchartsFactory
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

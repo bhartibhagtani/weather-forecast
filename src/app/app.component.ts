@@ -12,7 +12,7 @@ import { Weather } from './weather.model'
 
 export class AppComponent {
   private weather: Weather = new Weather();
-  private response: any;
+  private response : any;
   private weatherForecastList =[];
   private minTempObj : any;
   private maxTempObj : any;
@@ -45,8 +45,8 @@ export class AppComponent {
   }
 
   prepareWeatherForecastList(response){
-     let thisI = this;
      let newWeatherList : any ={};
+     let weatherForecastList = [];
      response.list.forEach(list => {  
         let newWeatherList : any ={};
       newWeatherList.temp_min = +((list.main.temp_min - 273.15).toFixed(2))
@@ -55,9 +55,9 @@ export class AppComponent {
       newWeatherList.dt = list.dt
       newWeatherList.dt_txt = list.dt_txt
       newWeatherList.time = list.dt_txt.substr(11, 5)
-      thisI.weatherForecastList.push(newWeatherList)
+       weatherForecastList.push(newWeatherList)
     })
-    return thisI.weatherForecastList;
+    return weatherForecastList;
   }
 
   getMinMaxTemperature(weatherForecastList){
@@ -72,7 +72,9 @@ export class AppComponent {
 
   initializeChart(weatherForecastList) {
     let thisI = this;
-   let weatherForecastListForChart = []
+    let weatherForecastListForChart = [];
+    thisI.temperatureArray = [];
+    thisI.timeArray = [];
     weatherForecastListForChart = weatherForecastList.sort((value1, value2) => value1.temp - value2.temp)
     weatherForecastListForChart.forEach(element => {
       thisI.temperatureArray.push(element.temp);
