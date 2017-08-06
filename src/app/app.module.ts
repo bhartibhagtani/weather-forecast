@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ChartModule } from 'angular2-highcharts';
 
-declare var require : any;
+export declare var require : any;
 @NgModule({
   declarations: [
     AppComponent

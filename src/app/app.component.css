@@ -28,6 +28,6 @@
   margin-left:37%;
 }
 
-input[type=submit]:hover {
-    background-color: #45a049;
+button[type=submit]:hover {
+    background-color:#0b5f7d;
 }
