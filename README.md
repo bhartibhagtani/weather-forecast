@@ -4,10 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Installation
 
-Download or clone the project-
-
+Download or clone the project and then navigate to the root directory. 
 Run `npm install`
-Run `npm start`
 
 ## Development server
 
