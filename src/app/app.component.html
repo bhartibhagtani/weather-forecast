@@ -1,0 +1,67 @@
+<style>
+  .text-color{
+    color:#279fca;
+  }
+  input[type=text], select {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    border-color:#279fca;
+    box-sizing: border-box;
+}
+
+ button[type=submit] {
+    width: 10%;
+    background-color:#279fca;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.inputDiv{
+  display:flex;
+  margin-left:37%;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+  </style>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <br>
+      <h2 class="text-color" align="center">Weather and Forecasts in your city</h2>
+      <form role="form" id="searchform" (ngSubmit)="onSubmit()">
+          <div class="inputDiv" align="center">
+            <input id="q" name="q" type="text" class="form-control border-color" [(ngModel)]="weather.cityName" placeholder="Your city name"
+              data-original-title="" title="">
+            <button type="submit" class="btn btn-blue"> Search</button>
+          </div>
+      </form>
+    </div>
+  </div>
+  <br>
+  <div style="margin-left:30%">
+  <div class="row">
+    <div class="col-sm-12" *ngIf="minTempObj!=null && maxTempObj!=null">
+      <span class="text-color">Min Temperature: {{minTempObj?.temp_min}} °C at {{minTempObj?.time}} hours</span>
+      <br>
+      <span class="text-color">Max Temperature: {{maxTempObj?.temp_max}} °C at {{maxTempObj?.time}} hours</span>
+    </div>
+  </div>
+  <br>
+  <div class="row" *ngIf="response!=null">
+    <div class="col-md-6">
+      <chart [options]="options">
+      </chart>
+    </div>
+  </div>
+  </div>
+</div>
